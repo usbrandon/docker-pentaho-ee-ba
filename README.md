@@ -1,4 +1,4 @@
-<h1>Pentaho-EE-DI</H2>
+<h1>Pentaho-EE-BA</H2>
 Dockerized implementation of Pentaho business analytics 6.0.1.2 Enterprise Edition.  This configuration uses the 'archive' mode of installation. Since Pentaho does not provide public links for it's enterprise downloads, and we do not supply them, this image will not run without links to your archive packages.
 
 <H2>To Run:</H2>

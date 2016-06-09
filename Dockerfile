@@ -1,5 +1,5 @@
 #Dockerfile to build Pentaho's Business Analytics frontend 
-# v 2.1.11
+# v 2.1.12
 # Created using pentaho 'archive' instructions from https://help.pentaho.com/Documentation/5.4/0F0/0P0/020/0B0
 # and info from https://github.com/rxacevedo/docker-pentaho-ba/blob/master/Dockerfile
 #
@@ -8,18 +8,18 @@
 # Docker Run Instructions:
 #
 #  #For testing the build process on a pc.
-#   docker run -d --name pentaho-ba -p 8080:8080 -e Tier=Test -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db:pentaho-db -v /docker/mounts/pentaho-ba/opt/pentaho:/opt/pentaho pentaho-ba &
+#   docker run -d --name pentaho-ba -p 8080:8080 -e Tier=Test -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db:pentaho-db -v /docker/mounts/pentaho-ba/opt/pentaho:/opt/pentaho wusa/pentaho-ee-ba:ba_6.0 &
 #
 #  #On first ever run, you must include the PGPWD (postgres adimn) password to initialize the database after that it's optional.
-#   docker run -i --name pentaho-ba-test -p 10800:8080 -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db-test -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db-test:pentaho-db-test -v /docker/mounts/pentaho-ba-test/opt/pentaho:/opt/pentaho pentaho-ba:latest &
+#   docker run -i --name pentaho-ba-test -p 10800:8080 -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db-test -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db-test:pentaho-db-test -v /docker/mounts/pentaho-ba-test/opt/pentaho:/opt/pentaho wusa/pentaho-ee-ba:ba_6.0 &
 #
 #  #On subsequent boots, (after db is initialized), run non-interactive.
 #   #dev
-#    docker run -d --name pentaho-ba-dev -p 10808:8080 -e Tier=Dev -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db-dev -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db-dev:pentaho-db-dev -v /docker/mounts/pentaho-ba-dev/opt/pentaho:/opt/pentaho --memory 6344M --memory-swap -1 --oom-kill-disable --cpu-shares=512 --cpuset-cpus="0-1" pentaho-ba:latest &
+#    docker run -d --name pentaho-ba-dev -p 10808:8080 -e Tier=Dev -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db-dev -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db-dev:pentaho-db-dev -v /docker/mounts/pentaho-ba-dev/opt/pentaho:/opt/pentaho --memory 6344M --memory-swap -1 --oom-kill-disable --cpu-shares=512 --cpuset-cpus="0-1" wusa/pentaho-ee-ba:ba_6.0 &
 #   #test
-#    docker run -d --name pentaho-ba-test -p 10800:8080 -e Tier=Test -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db-test -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db-test:pentaho-db-test -v /docker/mounts/pentaho-ba-test/opt/pentaho:/opt/pentaho --memory 6344M --memory-swap -1 --oom-kill-disable --cpu-shares=512 --cpuset-cpus="0-1" pentaho-ba:2.1.10 &
+#    docker run -d --name pentaho-ba-test -p 10800:8080 -e Tier=Test -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db-test -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db-test:pentaho-db-test -v /docker/mounts/pentaho-ba-test/opt/pentaho:/opt/pentaho --memory 6344M --memory-swap -1 --oom-kill-disable --cpu-shares=512 --cpuset-cpus="0-1" wusa/pentaho-ee-ba:ba_6.0 &
 #   #Prod
-#    docker run -d --name pentaho-ba-prod -p 10804:8080 -e Tier=Prod -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db-prod -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db-prod:pentaho-db-prod -v /docker/mounts/pentaho-ba-prod/opt/pentaho:/opt/pentaho --memory 6656M --memory-swap -1 --oom-kill-disable --cpu-shares=1024 --cpuset-cpus="0-5" pentaho-ba:2.1.10 &
+#    docker run -d --name pentaho-ba-prod -p 10804:8080 -e Tier=Prod -e PGUSER=postgresadm -e PGPWD=8s88jjjChangeMe99aks88 -e PGHOST=pentaho-db-prod -e PGPORT=5432 -e PGDATABASE=postgres --link pentaho-db-prod:pentaho-db-prod -v /docker/mounts/pentaho-ba-prod/opt/pentaho:/opt/pentaho --memory 6656M --memory-swap -1 --oom-kill-disable --cpu-shares=1024 --cpuset-cpus="0-5" wusa/pentaho-ee-ba:ba_6.0 &
 #
 FROM phusion/baseimage:0.9.18
 MAINTAINER Dave Barnum <Dave_Barnum@wycliffe.org>
